@@ -5,11 +5,9 @@ def submit():
     name = name_textbox.get().strip()
     sid = sid_textbox.get().strip()
 
-    # Clear previous messages
     for widget in root.grid_slaves(row=8, column=1):
         widget.destroy()
 
-    # Name validation
     if not name:
         error_label = Label(root, text="Error: Name cannot be empty", fg="red")
         error_label.grid(row=8, column=1)
@@ -29,7 +27,6 @@ def submit():
             task_textbox.delete(0, END)
             task_textbox.insert(0, "To complete task B: Display all images then shuffle them.")
 
-    # If valid
     success_label = Label(root, text="Login Successful!", fg="green")
     success_label.grid(row=8, column=1)
 
@@ -48,7 +45,7 @@ task_textbox = Entry(root, width=50, fg="#000", bg="#fff")
 task_textbox.config(state=DISABLED)
 
 submit_btn = Button(root, width=10, text="Submit", command=submit)
-exit_btn = Button(root, width=10, text="Exit Program", command=None)
+exit_btn = Button(root, width=15, text="Exit Program", command=root.quit)
 
 name_label.grid(row=0, column=1)
 name_textbox.grid(row=1, column=1)
@@ -57,6 +54,7 @@ sid_textbox.grid(row=3, column=1)
 task_label.grid(row=4, column=1)
 task_textbox.grid(row=5, column=1)
 submit_btn.grid(row=6, column=1)
+exit_btn.grid(row=7, column=1)
 
 root.grid_columnconfigure(0, weight=1)
 root.grid_columnconfigure(1, weight=1)
